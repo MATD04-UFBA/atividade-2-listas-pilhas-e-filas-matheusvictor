@@ -1,3 +1,4 @@
+#include <vector>
 #include <string>
 
 #include <Carta.h>
@@ -9,14 +10,23 @@ class Jogador {
 private:
     string nome;        
     Carta* deckDePares;
-    Carta* deckCartasSemPares;
+    vector<Carta*> deckCartasSemPares;
+    Jogador* proximoJogador;
 
 public:
     Jogador();
+    Jogador(string nome);
     ~Jogador();
 
     void separarPares();
-    
     void pegarCartaOponente(int posicaoCarta);
+
+    void setarJogador(string n);
+    void setarProximo(Jogador* j);       
+
+    Jogador* obterJogadorAtual();
+  	Jogador* obterProximoJogador();
+
+    void imprimirInformacoesJogador();
 
 };
