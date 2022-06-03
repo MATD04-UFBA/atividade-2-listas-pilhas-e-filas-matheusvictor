@@ -81,3 +81,36 @@ Qualquer dúvida adicional, evite problemas: não presuma nada, procure o profes
 
 [5]	WikiHow. "Como jogar mico em 12 passos". disponível em: https://pt.wikihow.com/Jogar-Mico
 
+# Sobre a resolução do problema
+
+## **Cartas de um baralho**:
+
+Um baralho de cartas tem um total de 52 cartas (desconsiderando as cartas Coringa); sendo que são classificadas de acordo com seus Naipes e Valores.
+
+Existem 4 Naipes ao todo, sendo eles: Copas, Espadas, Ouros e Paus. Cada um desses Naipes possui também um símbolo para representá-los, conforme imagem abaixo:
+
+![Naipes de um baralho](https://cdn.hinative.com/attached_images/155713/5eaa7949664108461a75350d24d6dd6b1f1e7270/large.png?1503102439)
+
+Em cada grupo de Naipe, há 13 cartas, que vão de Às ao Rei, e são esses que representam os Valores de cada carta. Assim, um baralho possui a seguinte composição:
+
+![Cartas de um baralhb](https://pt-static.z-dn.net/files/dac/315a4dd16b9c0c7d20c3a155f41c97d9.png)
+
+-----
+## ***(WIP)*** **Estratégia adotada para solucionar a atividade:**
+
+
+-----
+## ***(WIP)*** **Diagrama de Classes:**
+
+-----
+## **Materiais consultados para desenvolver a solução:**
+
+- [Jogos de Cartas: Mico](http://jogosdecartas.hut.com.br/mico/)
+- [stack-data-structure](https://www.geeksforgeeks.org/stack-data-structure-introduction-program/)
+- [How to cast int to enum in C++?](https://stackoverflow.com/questions/11452920/how-to-cast-int-to-enum-in-c)
+- [C++ | Shuffling a Deck of Cards](https://www.youtube.com/watch?v=Bsyvs82XliM)
+- [Declarações de enumeração C](https://docs.microsoft.com/pt-br/cpp/c-language/c-enumeration-declarations?view=msvc-170)
+- [C++ - using enums to generate a deck of cards](https://stackoverflow.com/questions/35937285/c-using-enums-to-generate-a-deck-of-cards)
+- [How to concatenate a std::string and an int](https://stackoverflow.com/questions/191757/how-to-concatenate-a-stdstring-and-an-int)
+- [How do I print out the contents of a vector?](https://stackoverflow.com/questions/10750057/how-do-i-print-out-the-contents-of-a-vector)
+- [Estrutura de Dados e Algoritmos: Filas - Queue](https://www.cos.ufrj.br/~rfarias/cos121/filas.html)
