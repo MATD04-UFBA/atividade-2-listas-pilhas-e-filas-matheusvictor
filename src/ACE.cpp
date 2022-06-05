@@ -24,7 +24,7 @@ ACE::~ACE() {
 }
 
 void ACE::inicializarACE () { 
-	for (int valor = Carta::Valores::DOIS; valor <= Carta::Valores::AS; valor++) {
+	for (int valor = Carta::Valores::AS; valor <= Carta::Valores::REI; valor++) {
         for (int naipe = Carta::Naipes::OUROS; naipe <= Carta::Naipes::ESPADAS; naipe++){
             Carta carta = Carta(
 				static_cast<Carta::Naipes>(naipe),
@@ -50,7 +50,7 @@ Carta* ACE::pegarCarta() {
         Carta* cartaRetirada = &this->ace[this->topo];
         return cartaRetirada;
     }
-    
+
     return nullptr;
 }
 
@@ -88,5 +88,10 @@ void ACE::imprimir() {
 		std::cout << "Naipe: " << this->ace[i].obterNaipe() << " | ";
 		std::cout << "Valor: " << this->ace[i].obterValor() << std::endl;
 	}
+	std::cout << "Total de cartas: " << this->topo << std::endl;
 	std::cout << "----------------------------------" << std::endl;
+}
+
+int ACE::tamanho() {
+	return this->topo;
 }

@@ -30,5 +30,7 @@ public:
 	void embaralhar();
 
 	void imprimir();
+	
+	int tamanho();
         
 };
