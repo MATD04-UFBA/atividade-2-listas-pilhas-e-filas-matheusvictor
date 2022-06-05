@@ -26,6 +26,17 @@ void Simulador::iniciarJogo() {
     this->iniciarJogadores();
     this->distribuirCartas();
 
+    No* no = this->jogadores->obterInicioLista();
+
+    do {        
+        std::cout << no->obterDado()->obterNome() << std::endl;        
+        no->obterDado()->exibirMao();
+        no->obterDado()->separarPares();
+        no->obterDado()->exibirMao();
+        no = no->obterProximo();
+    } while (no->obterProximo() != this->jogadores->obterInicioLista()->obterProximo());
+
+
 }
 
 void Simulador::iniciarJogadores() {
