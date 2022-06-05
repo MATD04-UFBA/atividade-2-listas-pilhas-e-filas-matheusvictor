@@ -22,25 +22,13 @@ private:
     Carta* mico;
     ListaJogadores* jogadores;
 
-     void iniciarBaralho();
-
-    void imprimirBaralho();
-
-    void imprimirTamanhoBaralho();
-
     void iniciarJogadores();
-
-    void imprimirJogadores();
-
+    
     void distribuirCartas();
+    
+    void iniciarBaralho();
 
     void iniciarPartida();
-
-    Carta* retirarMico();
-
-    void imprimirMico();
-
-    ListaJogadores* obterJogadores();
     
     void exibirMaoJogador(Jogador* j);
 

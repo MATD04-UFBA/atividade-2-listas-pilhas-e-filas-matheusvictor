@@ -20,7 +20,7 @@ void Simulador::iniciarJogo() {
 
     this->baralho->embaralhar();    
     // cout << "O Mico foi retirado! Deseja Deseja imprimir o Mico [S/N] = ";
-    Carta* mico = this->retirarMico();
+    Carta* mico = this->baralho->pegarCarta();
     // mico->obterDetalhesCarta();
 
     this->iniciarJogadores();
@@ -64,16 +64,8 @@ void Simulador::iniciarPartida() {
     }
 }
 
-Carta* Simulador::retirarMico() {
-    return this->baralho->pegarCarta();
-}
-
 void Simulador::exibirMaoJogador(Jogador* j) {
     j->exibirNumeroCartas();
-}
-
-ListaJogadores* Simulador::obterJogadores() {
-    return this->jogadores;
 }
 
 bool Simulador::verificarCartasJogadores() {
