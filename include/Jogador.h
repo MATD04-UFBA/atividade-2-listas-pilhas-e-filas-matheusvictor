@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 
+#include <ACE.h>
 #include <Carta.h>
 
 using namespace std;
@@ -8,25 +9,21 @@ using namespace std;
 class Jogador {
     
 private:
-    string nome;        
-    Carta* deckDePares;
-    vector<Carta*> deckCartasSemPares;
-    Jogador* proximoJogador;
+  string nome;        
+  ACE* monte;
+  vector<Carta*> mao;
 
 public:
-    Jogador();
-    Jogador(string nome);
-    ~Jogador();
+  Jogador();
+  Jogador(string nome);
+  ~Jogador();
 
-    void separarPares();
-    void pegarCartaOponente(int posicaoCarta);
+  void separarPares();
+  void pegarCartaOponente(int posicaoCarta);
+  void addCartaMao(Carta* c);
 
-    void setarJogador(string n);
-    void setarProximo(Jogador* j);       
-
-    Jogador* obterJogadorAtual();
-  	Jogador* obterProximoJogador();
-
-    void imprimirInformacoesJogador();
+  string obterNome();
+  void exibirNumeroCartas();
+  void exibirMao();
 
 };
