@@ -15,27 +15,25 @@ Simulador::~Simulador() { }
 void Simulador::iniciarJogo() {    
     this->baralho->inicializarACE();
     
-    // cout << "Baralho inicializado! Deseja Deseja imprimi-lo antes de embaralha-lo? = ";
+    char opcao = ' ';
+    // cout << "Baralho inicializado! Deseja Deseja imprimi-lo antes de embaralha-lo? [S/N] = ";
+
     // this->baralho->imprimir();
 
     this->baralho->embaralhar();    
     // cout << "O Mico foi retirado! Deseja Deseja imprimir o Mico [S/N] = ";
     Carta* mico = this->baralho->pegarCarta();
     // mico->obterDetalhesCarta();
-
+    
+    // cout << "Incializando jogadores e distribuindo cartas... " << endl;
     this->iniciarJogadores();
     this->distribuirCartas();
+    // cout << "Jogadores incializados e cartas distribuídas!" << endl;
 
-    No* no = this->jogadores->obterInicioLista();
-
-    do {        
-        std::cout << no->obterDado()->obterNome() << std::endl;        
-        no->obterDado()->exibirMao();
-        no->obterDado()->separarPares();
-        no->obterDado()->exibirMao();
-        no = no->obterProximo();
-    } while (no->obterProximo() != this->jogadores->obterInicioLista()->obterProximo());
-
+    this->iniciarSeparacaoParesCartas();
+    
+    this->jogadores->sortearInicioLista();
+    cout << "O jogador " << this->jogadores->obterInicioLista()->obterDado()->obterNome() << " foi sorteado! " << endl;
 
 }
 
@@ -69,16 +67,19 @@ void Simulador::distribuirCartas() {
 
 }
 
-void Simulador::iniciarPartida() { 
-    while (verificarCartasJogadores()) {
-
-    }
-}
-
 void Simulador::exibirMaoJogador(Jogador* j) {
     j->exibirNumeroCartas();
 }
 
 bool Simulador::verificarCartasJogadores() {
     return true;
+}
+
+void Simulador::iniciarSeparacaoParesCartas() {
+    No* no = this->jogadores->obterInicioLista();
+    do {        
+        std::cout << no->obterDado()->obterNome() << std::endl;        
+        no->obterDado()->separarPares();
+        no = no->obterProximo();
+    } while (no->obterProximo() != this->jogadores->obterInicioLista()->obterProximo());
 }

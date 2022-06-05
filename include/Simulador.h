@@ -26,12 +26,12 @@ private:
     
     void distribuirCartas();
     
-    void iniciarBaralho();
-
-    void iniciarPartida();
-    
     void exibirMaoJogador(Jogador* j);
 
     bool verificarCartasJogadores();
+
+    void iniciarSeparacaoParesCartas();
+
+    void iniciarRodada(Jogador* j);
    
 };
