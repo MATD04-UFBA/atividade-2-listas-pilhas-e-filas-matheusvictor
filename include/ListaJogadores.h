@@ -1,3 +1,4 @@
+#include <time.h>
 #include<iostream>
 
 #include "No.h"
@@ -17,8 +18,11 @@ public:
 
     bool inserirJogador(Jogador* j);
     bool removerJogador(Jogador j);
-    bool buscarJogador(Jogador* j, No* &jogadorAtual, No* &jogadorAnterior);
+    bool buscarJogador(Jogador* j, No* &noAtual);
 
+    void sortearInicioLista();
+    No* obterInicioLista();
+    
     int tamanho();
     void imprimirLista();
 

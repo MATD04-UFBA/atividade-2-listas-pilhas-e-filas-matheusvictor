@@ -53,8 +53,41 @@ bool ListaJogadores::removerJogador(Jogador j) {
 	return true;
 }
 
-bool ListaJogadores::buscarJogador(Jogador* j, No* &jogadorAtual, No* &jogadorAnterior) {
+bool ListaJogadores::buscarJogador(Jogador* j, No* &noAtual) {
+	
+	noAtual = nullptr;
+
+	if (this->numeroJogadores == 0) {
+		return false;
+	}
+
+	noAtual = this->inicioLista;
+
+	while ((noAtual != nullptr) &&	(noAtual->obterDado() != j)) {
+		noAtual = noAtual->obterProximo();
+	}
+
+	if(noAtual == nullptr) return false;
+
 	return true;		
+}
+
+void ListaJogadores::sortearInicioLista() {
+	srand(time(NULL));
+	int posicaoSorteada = rand() % this->numeroJogadores;
+	
+	No* no = this->inicioLista;
+	for (int i = 0; i < posicaoSorteada; i++) {
+		no = no->obterProximo();
+	}
+
+	this->inicioLista = no;
+	
+	cout << posicaoSorteada << endl;
+}
+
+No* ListaJogadores::obterInicioLista() { 
+	return this->inicioLista;
 }
 
 bool ListaJogadores::isListaVazia() {
@@ -70,7 +103,9 @@ int ListaJogadores::tamanho() {
 }
 
 void ListaJogadores::imprimirLista() {
-	
+
+	std::cout << "-------------------------------" << std::endl;
+		
 	if (this->inicioLista == nullptr) {
 		std::cout << "*********** LISTA VAZIA ***********" << std::endl;
 		return;
@@ -78,16 +113,12 @@ void ListaJogadores::imprimirLista() {
 
 	No* noAtual = this->inicioLista;
 
-	std::cout << "[ ";
-
 	while (noAtual->obterProximo() != this->inicioLista) {
 		noAtual->imprimirNo();
-		std::cout << " , ";
 		noAtual = noAtual->obterProximo();
 	}
 	noAtual->imprimirNo();
 
-	std::cout << " ]" << std::endl;
 	std::cout << "-------------------------------" << std::endl;
 
 }
