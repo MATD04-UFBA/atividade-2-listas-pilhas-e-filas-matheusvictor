@@ -61,7 +61,7 @@ Seu simulador será avaliado pelos critérios:
 4. Geração do *ACE* (1,0 ponto)
 5. Distribuição das cartas pelos jogadores (1,5 ponto)
 6. Formação dos pares no inicio do jogo (2,0 ponto)
-7. Simmulação das jogadas (2,0 ponto)
+7. Simulação das jogadas (2,0 ponto)
 8. Simulação completa (1,5 ponto)
 9. Penalidades (1,0 ponto por dia de atraso)
 
@@ -98,9 +98,51 @@ Em cada grupo de Naipe, há 13 cartas, que vão de Às ao Rei, e são esses que 
 -----
 ## ***(WIP)*** **Estratégia adotada para solucionar a atividade:**
 
+Dada a breve explicação da composição de um baralho, 
+
+### Estruturas de Dados utilizadas:
+
+As principais estruturas utilizadas nessa solução foram **Pilha** () e **Lista Simplesmente Encadeada Circular** (LSEC).
+
+Uma Pilha pode ser definida como ....
+Neste caso, como a distribuição das cartas entre os jogadores, por exemplo, é feita retirando o topo e a transferindo para um jogador, nota-se um comportamente semelhante ao de uma Pilha. 
+
+No caso da Lista Simplesmente Encadeada Circular 
+
+~~Uma Fila também poderia ser uma opção a ser utilizado, porém o comporamento de~~~
 
 -----
 ## ***(WIP)*** **Diagrama de Classes:**
+
+-----
+## ***(WIP)*** **Compilar & executar:**
+
+Com o compilador da sua preferência, será necessário compilar os seguintes arquivos `.cpp`: `ACE`, `Carta`, `No`, `Jogador`, `ListaJogadores`, `Simulador` e `main`, que estão localizados no diretório `src`.
+
+Usando o g++, por exemplo, você pode executar o seguinte comando para compilar esses arquivos:
+
+> g++ src\ACE.cpp src\Carta.cpp src\No.cpp src\Jogador.cpp src\ListaJogadores.cpp src\Simulador.cpp main.cpp -I 
+include -o build\\*main*.exe
+
+Você pode nomear o executável do programa de outra forma, se preferir. Neste caso, basta substituir o *main.exe* para *NomeDoExecutavel*.exe onde *NomeDoExecutavel* representará o nome do programa quando executado através do comando que será mostrado a seguir. Porém, **é importante que o executável seja compilado com a extensão `.exe`.**
+
+Após a compilação, digite o seguinte comando para que o programa seja executado:
+
+> .\build\\*main*.exe
+
+Lembrando que caso tenha dado outro nome ao executável ao invés de `main.exe`, deverá executar com o nome que foi dado.
+
+Caso você queira executar o jogo já informando o número de jogadores que irão jogar, basta que execute o comando a seguir:
+
+> .\build\main.exe `N`
+
+Onde `N`, neste caso, representa o número de jogadores. Para que o jogo seja jogado por 2 pessoas, por exemplo, você deve executar:
+
+> .\build\main.exe `2`
+
+Caso você não passe nenhum argumento, o jogo será iniciado com o número mínimo de jogadores, neste caso, 2.
+
+Obs.: Pode haver diferenças dos comandos executados a depender do compilador e sistema operacional utilizados. Nesta documentação foram listados os comandos executados usando o Visual Studio Code no Windows 10.
 
 -----
 ## **Materiais consultados para desenvolver a solução:**
