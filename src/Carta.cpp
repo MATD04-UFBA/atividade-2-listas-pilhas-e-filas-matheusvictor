@@ -13,20 +13,26 @@ Carta::Carta(Carta::Naipes naipe, Carta::Valores valor) {
 
 Carta::~Carta() {}
 
-char Carta::obterNaipe() {
-	switch (this->naipe){
-		case Carta::Naipes::COPAS: return 'C'; break;
-		case Carta::Naipes::PAUS: return 'P'; break;
-		case Carta::Naipes::ESPADAS: return 'E'; break;
-		default: return 'O'; break;
-	};	
+Carta::Naipes Carta::obterNaipe() {
+	return this->naipe;
 }
 
 Carta::Valores Carta::obterValor() {
 	return this->valor;
 }
 
+bool Carta::fazPar(Carta* outraCarta) {
+	return this->valor == outraCarta->valor;
+}
+
 void Carta::obterDetalhesCarta(){
-	std::cout << "Naipe: " << this->obterNaipe() << " | ";
+	char naipe;
+	switch (this->naipe){
+		case Carta::Naipes::COPAS: naipe = 'C'; break;
+		case Carta::Naipes::PAUS: naipe = 'P'; break;
+		case Carta::Naipes::ESPADAS: naipe = 'E'; break;
+		default: naipe = 'O'; break;
+	};	
+	std::cout << "Naipe: " << naipe << " | ";
 	std::cout << "Valor: " << this->obterValor() << std::endl;
 }

@@ -15,6 +15,7 @@ public:
 		ESPADAS
 	};
     enum Valores {
+		AS = 1,
 		DOIS,
 		TRES,
 		QUADTRO,
@@ -26,21 +27,20 @@ public:
 		DEZ,
 		VALETE,
 		RAINHA,
-		REI,
-		AS
+		REI
 	};	
 
 	Carta();
 	Carta(Carta::Naipes naipe, Carta::Valores valor);
 	~Carta();
 
-	char obterNaipe();
+	Carta::Naipes obterNaipe();
 
 	Carta::Valores obterValor();
 
 	void obterDetalhesCarta();
 
-	bool ehIgual(Carta outraCarta);
+	bool fazPar(Carta* outraCarta);
 
 private:
 	Naipes naipe;
