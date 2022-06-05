@@ -1,6 +1,4 @@
-#include <stack>
 #include <time.h>
-#include <vector>
 #include <stdlib.h>
 #include <iostream>
 
@@ -10,11 +8,18 @@
 using namespace std;
 
 int main(int argc, char const *argv[]) {
-    
-    Simulador* simulador = new Simulador(2);
-    simulador->iniciarBaralho();
-    Carta* mico = simulador->retirarMico();
-    mico->obterDetalhesCarta();
 
+    unsigned int numeroJogadores;  
+
+    if (argc > 1) {
+		  numeroJogadores = atoi(argv[1]);
+    } else {
+        cout << "Informe a quantidade de pessoas que irao jogar = ";
+        cin >> numeroJogadores;
+    }    
+
+    Simulador* simulador = new Simulador(numeroJogadores);
+    simulador->iniciarJogo();
+    
     return 0;
 }
