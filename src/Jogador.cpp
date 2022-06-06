@@ -13,8 +13,6 @@ Jogador::~Jogador()  {
 
 void Jogador::separarPares() {
 
-	cout << "tamanho mao: " << this->mao.size() << endl;
-
 	for (int i = 0; i < this->mao.size() ; i++) {
 		for (int j = i; j < this->mao.size(); j++) {
 			if (i == j) {
@@ -46,16 +44,43 @@ void Jogador::separarPares() {
 	}
 }
 
-string Jogador::obterNome() {
-	return this->nome;
-}
-
 void Jogador::addCartaMao(Carta* c) {
 	this->mao.push_back(c);
 }
 
-void Jogador::exibirNumeroCartas() {
+string Jogador::obterNome() {
+	return this->nome;
+}
+
+void Jogador::imprimirDetalhes() {
+	// Deve ser possível ver as cartas de cada jogador, e a carta de cima do monte de cada jogador.  
+	cout << "[ " << this->obterNome() << " ]" << endl;
+	cout << "Numero de cartas na mao: " << this->mao.size() << endl;
+	this->exibirMao();
+	this->exibirTopoMonte();
+	cout << "-------------------------------------------------------" << endl;
+}
+
+void Jogador::exibirNumeroCartasMao() {
 	std::cout << "Qtd. de cartas de [" << this->obterNome() << "]: " << this->mao.size() << std::endl;
+}
+
+void Jogador::exibirTopoMonte() {
+	Carta* cartaUltima = this->monte->pegarCarta();
+	Carta* cartaPenultima = this->monte->pegarCarta();
+
+	cout << "As duas cartas do topo do monte sao: " << endl;
+	cartaUltima->obterDetalhesCarta();
+	cartaPenultima->obterDetalhesCarta();
+
+	this->monte->addCarta(
+		Carta(cartaPenultima->obterNaipe(), cartaPenultima->obterValor())
+	);
+
+	this->monte->addCarta(
+		Carta(cartaUltima->obterNaipe(), cartaUltima->obterValor())
+	);
+
 }
 
 void Jogador::exibirMao() {
@@ -65,4 +90,28 @@ void Jogador::exibirMao() {
 		carta->obterDetalhesCarta();
 		i++;
 	}
+}
+
+void Jogador::ordenarMao() {
+
+	Carta* aux;
+	int indiceMenorCarta;
+
+    for (int i = 0; i < (this->mao.size() - 1); i++) {
+		indiceMenorCarta = i;
+		
+        for (int j = (i + 1); j < this->mao.size(); j++) {        
+			if (this->mao[indiceMenorCarta]->obterValor() > this->mao[j]->obterValor()) {
+				indiceMenorCarta = j;
+            }
+        }
+
+        if (this->mao[i]->obterValor() != this->mao[indiceMenorCarta]->obterValor()) {
+            aux = this->mao[i];
+            this->mao[i] = this->mao[indiceMenorCarta];
+            this->mao[indiceMenorCarta] = aux;
+        }
+
+    }
+
 }

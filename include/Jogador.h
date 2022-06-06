@@ -23,7 +23,11 @@ public:
   void addCartaMao(Carta* c);
 
   string obterNome();
-  void exibirNumeroCartas();
+  void imprimirDetalhes();
+  void exibirNumeroCartasMao();
+  void exibirTopoMonte();
   void exibirMao();
+
+  void ordenarMao();
 
 };
