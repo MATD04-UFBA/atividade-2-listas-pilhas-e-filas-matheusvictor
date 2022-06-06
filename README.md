@@ -136,18 +136,14 @@ Assim, "as listas que respeitam a restrição LIFO são denominadas Pilhas" (Ede
 ![Pilha](https://thumbs.gfycat.com/LikelyAbandonedAracari-size_restricted.gif)
 ###### Figura 4. Representação do comportamento de empilhar.
 
-Neste caso, como a distribuição das cartas entre os jogadores, por exemplo, é feita retirando o topo e a transferindo para um jogador, nota-se um comportamente semelhante ao de uma Pilha. 
+Neste caso, como a distribuição das cartas entre os jogadores é feita retirando o topo e a transferindo para um jogador, nota-se um comportamente semelhante ao de uma Pilha. 
 
-No caso da LSEC 
+No caso da LSEC, temos que "quando uma lista linear encadeada apresenta um elo ligando o último nodo ao primeiro, ela se torna uma lista circular" (Idem). E, "neste caso, qualquer nodo pode ser utilizado para fazer acesso à lista, pois toda ela pode ser per corrida a partir de qualquer nodo". Assim, dado que o jogador que irá iniciar o jogo será definido através de sorteio, temos que este pode ser a vir qualquer um dos nós da lista; e devido a este comportamento, foi implementada uma LSEC para que seja obedecida a rotatividade entre os jogadores a partir daquele que foi sorteado para começar. 
 
-"Quando uma lista linear encadeada apresenta um elo ligando o último nodo ao primeiro, ela se torna uma lista circular"
+Porém, ainda que sejam circulares, "estas listas também apresentam um ponteiro para fazer referência à lista" onde o primeiro nó acessado  é identificado como o primeiro da lista. Neste caso, o primeiro nó acessado será dado a partir do sorteio de qual jogador irá começar e, a partir dele, a lista seguirá uma sequência horária.
 
-"Neste caso, qualquer
-nodo pode ser utilizado para fazer acesso à lista, pois toda ela pode ser per corrida a partir de qualquer nodo"
-
-Dado ainda que o jogador que irá iniciar o jogo será definido através de sorteio, este é um comportamento.
-
-Porém, ainda que sejam circulares, "estas listas também apresentam um ponteiro para fazer referência à lista" onde o primeiro nó acessado  é identificado como o primeiro da lista.
+![Lista circular](https://i.ibb.co/PWzj1Z2/image.png)
+###### Figura 4. Lista encadeada circular. Fonte: Edelweiss e Galante (2009), p. 98.
 
 -----
 ## **Compilar & executar:**
@@ -160,6 +156,8 @@ Usando o `g++`, por exemplo, você pode executar o seguinte comando para compila
 include -o build\\*main*.exe
 
 Você pode nomear o executável do programa de outra forma, se preferir. Neste caso, basta substituir o *main.exe* para *NomeDoExecutavel*.exe onde *NomeDoExecutavel* representará o nome do programa quando executado através do comando que será mostrado a seguir. Porém, **é importante que o executável seja compilado com a extensão `.exe`.**
+
+-----
 
 Após a compilação, digite o seguinte comando para que o programa seja executado:
 
@@ -184,14 +182,28 @@ Obs.: Pode haver diferenças dos comandos executados a depender do compilador e 
 -----
 ## **Materiais consultados para desenvolver a solução:**
 
-- Estruturas de dados [recurso eletrônico] / Nina Edelweiss,
-Renata Galante. – Dados eletrônicos. – Porto Alegre: Bookman, 2009.
-- [Jogos de Cartas: Mico](http://jogosdecartas.hut.com.br/mico/)
-- [stack-data-structure](https://www.geeksforgeeks.org/stack-data-structure-introduction-program/)
-- [How to cast int to enum in C++?](https://stackoverflow.com/questions/11452920/how-to-cast-int-to-enum-in-c)
-- [C++ | Shuffling a Deck of Cards](https://www.youtube.com/watch?v=Bsyvs82XliM)
-- [Declarações de enumeração C](https://docs.microsoft.com/pt-br/cpp/c-language/c-enumeration-declarations?view=msvc-170)
-- [C++ - using enums to generate a deck of cards](https://stackoverflow.com/questions/35937285/c-using-enums-to-generate-a-deck-of-cards)
-- [How to concatenate a std::string and an int](https://stackoverflow.com/questions/191757/how-to-concatenate-a-stdstring-and-an-int)
-- [How do I print out the contents of a vector?](https://stackoverflow.com/questions/10750057/how-do-i-print-out-the-contents-of-a-vector)
+- EDELWEISS, Nina; GALANTE, Renata. **Estruturas de dados** [recurso eletrônico]. Porto Alegre: Bookman, 2009.
+
+- [Stack Data Structure (Introduction and Program)](https://www.geeksforgeeks.org/stack-data-structure-introduction-program/)
+
 - [Estrutura de Dados e Algoritmos: Filas - Queue](https://www.cos.ufrj.br/~rfarias/cos121/filas.html)
+
+- [Jogos de Cartas: Mico](http://jogosdecartas.hut.com.br/mico/)
+
+- [Declarações de enumeração C](https://docs.microsoft.com/pt-br/cpp/c-language/c-enumeration-declarations?view=msvc-170)
+
+- [C++ - using enums to generate a deck of cards](https://stackoverflow.com/questions/35937285/c-using-enums-to-generate-a-deck-of-cards)
+
+- [How to cast int to enum in C++?](https://stackoverflow.com/questions/11452920/how-to-cast-int-to-enum-in-c)
+
+- [How to concatenate a std::string and an int](https://stackoverflow.com/questions/191757/how-to-concatenate-a-stdstring-and-an-int)
+
+- [C++ | Shuffling a Deck of Cards](https://www.youtube.com/watch?v=Bsyvs82XliM)
+
+- [Como inicializar um vetor em C++](https://www.delftstack.com/pt/howto/cpp/how-to-initialize-a-vector-in-cpp/)
+
+- [Como usar o vector para armazenar uma classe?](https://pt.stackoverflow.com/questions/120231/como-usar-o-vector-para-armazenar-uma-classe)
+
+- [How do I print out the contents of a vector?](https://stackoverflow.com/questions/10750057/how-do-i-print-out-the-contents-of-a-vector)
+
+- [C++ toupper()](https://www.programiz.com/cpp-programming/library-function/cctype/toupper)
