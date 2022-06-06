@@ -98,7 +98,13 @@ Em cada grupo de Naipe, há 13 cartas, que vão de Às ao Rei, e são esses que 
 -----
 ## ***(WIP)*** **Estratégia adotada para solucionar a atividade:**
 
-Dada a breve explicação da composição de um baralho, 
+Dada a breve explicação da composição de um baralho e as regras do jogo Mico [], a estrutura que representa um baralho é composta por representações de Cartas e estas, por sua vez, têm as características expostas na seção acima.
+
+Então, para além de uma classe que representasse uma Carta individualmente, foi criada uma outra que seria composta por uma sequência de Cartas. Nesta implementação, essa estrutura foi implementada como uma Pilha (que será abordada mais a frente).
+
+### ***(WIP)*** **Diagrama de Classes:**
+
+![Diagrama de Classes](https://i.ibb.co/Jt6wp9j/Diagrama-de-classes.png)
 
 ### Estruturas de Dados utilizadas:
 
@@ -111,8 +117,6 @@ No caso da Lista Simplesmente Encadeada Circular
 
 ~~Uma Fila também poderia ser uma opção a ser utilizado, porém o comporamento de~~~
 
------
-## ***(WIP)*** **Diagrama de Classes:**
 
 -----
 ## ***(WIP)*** **Compilar & executar:**
