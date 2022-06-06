@@ -90,42 +90,73 @@ Um baralho de cartas tem um total de 52 cartas (desconsiderando as cartas Coring
 Existem 4 Naipes ao todo, sendo eles: Copas, Espadas, Ouros e Paus. Cada um desses Naipes possui também um símbolo para representá-los, conforme imagem abaixo:
 
 ![Naipes de um baralho](https://cdn.hinative.com/attached_images/155713/5eaa7949664108461a75350d24d6dd6b1f1e7270/large.png?1503102439)
+###### Figura 1. Naipes de cartas de um baralho.
 
 Em cada grupo de Naipe, há 13 cartas, que vão de Às ao Rei, e são esses que representam os Valores de cada carta. Assim, um baralho possui a seguinte composição:
 
 ![Cartas de um baralhb](https://pt-static.z-dn.net/files/dac/315a4dd16b9c0c7d20c3a155f41c97d9.png)
+###### Figura 2. Cartas de um baralho.
 
 -----
-## ***(WIP)*** **Estratégia adotada para solucionar a atividade:**
+## **Estratégia adotada para solucionar a atividade:**
 
-Dada a breve explicação da composição de um baralho e as regras do jogo Mico [], a estrutura que representa um baralho é composta por representações de Cartas e estas, por sua vez, têm as características expostas na seção acima.
+Dada a breve explicação da composição de um baralho e as regras do jogo Mico [5], podemos entender que um baralho trata-se de um conjunto de cartas e estas, por sua vez, têm as características expostas na seção anterior.
 
-Então, para além de uma classe que representasse uma Carta individualmente, foi criada uma outra que seria composta por uma sequência de Cartas. Nesta implementação, essa estrutura foi implementada como uma Pilha (que será abordada mais a frente).
+Então, para além de uma classe que representasse uma carta individualmente, foi criada uma outra (`ACE`) que seria composta por uma sequência de `Carta`. Assim, a estrutura implementada na `ACE` objetiva representar um baralho.
 
-### ***(WIP)*** **Diagrama de Classes:**
+A classe `ACE` foi implementada como uma estrutura de Pilha (que será abordada mais a frente). A escolha por essa estrutura deu-se devido à regra de negócio para distribuição de cartas (na qual a carta do topo do baralho precisa ser distribuída rotativamente entre os jogadores, uma a uma).
 
-![Diagrama de Classes](https://i.ibb.co/Jt6wp9j/Diagrama-de-classes.png)
+Enquanto um agrupamento de cartas, a classe `ACE` fica responsável ainda por embaralhar este agrupamento através da randomização de índices que terão seu valores (`Carta`) trocados de posições de  sucessivas vezes.
 
-### Estruturas de Dados utilizadas:
+Já a classe `ListaJogadores` foi implementada como uma estrutura de Lista Simplemente Encadaeada Circular (LSEC), levando em consideração que a rotatividade dos jogadores entre as rodadas. Assim, cada nó desta lista guarda um `Jogador` e a referência para o próximo, onde, neste cenário, o último jogador volta a apontar para o primeiro. Assim, a lista será considerada vazia somente quando não houver um primeiro jogador alocado no início da lista. 
 
-As principais estruturas utilizadas nessa solução foram **Pilha** () e **Lista Simplesmente Encadeada Circular** (LSEC).
+A classe `Simulador` tem a responsabilidade de realizar praticamente todo o fluxo do jogo, através das instâncias das classes `Carta`, `ACE` e `ListaJogadores`, além de realizar validações e controles de fluxo específicos. Por exemplo, considerando que o jogo Mico deve ser jogador por no mínimo 2 pessoas, a `ListaJogadores` não poderá ser instanciada com um número menor que este.
 
-Uma Pilha pode ser definida como ....
+## **Diagrama de Classes:**
+
+De maneira visual, as classes existentes, seus métodos e relacionamentos podem ser vistos no diagrama abaixo.
+
+![Diagrama de Classes](https://i.ibb.co/Jt6wp9j/Diagrama-de-classes.png) 
+
+O diagrama não segue à risca todas as regras UML e foi desenhado para dar uma melhor noção dos atributos das classes a serem desenvolvidas, bem como seus métodos e relacionamentos. Na classe `ACE`, por exemplo, o atributo `deck` é representado como um `Array`; porém a estrutura implementada trata-se de uma Pilha e esta definição no diagrama serviu apenas para passar a noção de que se trata de um conjunto de `Carta`.
+###### Figura 3. Diagrama de Classes existentes na solução desenvolida. Fonte: Autor.
+
+## **Definição das estruturas de dados utilizadas:**
+
+Como "determinadas listas lineares apresentam alguma disciplina restrista de organização e acesso de seus nodos", nesta seção será abordada rapidamente os conceitos das estrutuas aqui implementadas. A saber, as principais estruturas utilizadas nesta solução foram **Pilha** e **Lista Simplesmente Encadeada Circular**.
+
+De modo geral, seguindo a definição de Edelweiss e Galante (2009):
+
+>"As duas principais restrições apresentadas para listas são:
+> - LIFO (*Last In First Out*) – dentre os nodos da lista, o primeiro nodo a ser retirado deve ser o último nodo que foi inserido;
+> - FIFO (*First In First Out*) – primeiro nodo a ser retirado deve ser o primeiro que foi inserido."
+
+Assim, "as listas que respeitam a restrição LIFO são denominadas Pilhas" (Edelweiss e Galante, 2009, p. 126). Esse comportamento pode ser visualizado ao imaginarmos uma pilha de pratos, por exemplo, onde um novo prato é sempre colocado no topo da pilha e, quando necessário, o primeiro prato a ser retirado deve ser o do topo da pilha.
+
+![Pilha](https://thumbs.gfycat.com/LikelyAbandonedAracari-size_restricted.gif)
+###### Figura 4. Representação do comportamento de empilhar.
+
 Neste caso, como a distribuição das cartas entre os jogadores, por exemplo, é feita retirando o topo e a transferindo para um jogador, nota-se um comportamente semelhante ao de uma Pilha. 
 
-No caso da Lista Simplesmente Encadeada Circular 
+No caso da LSEC 
 
-~~Uma Fila também poderia ser uma opção a ser utilizado, porém o comporamento de~~~
+"Quando uma lista linear encadeada apresenta um elo ligando o último nodo ao primeiro, ela se torna uma lista circular"
 
+"Neste caso, qualquer
+nodo pode ser utilizado para fazer acesso à lista, pois toda ela pode ser per corrida a partir de qualquer nodo"
+
+Dado ainda que o jogador que irá iniciar o jogo será definido através de sorteio, este é um comportamento.
+
+Porém, ainda que sejam circulares, "estas listas também apresentam um ponteiro para fazer referência à lista" onde o primeiro nó acessado  é identificado como o primeiro da lista.
 
 -----
-## ***(WIP)*** **Compilar & executar:**
+## **Compilar & executar:**
 
-Com o compilador da sua preferência, será necessário compilar os seguintes arquivos `.cpp`: `ACE`, `Carta`, `No`, `Jogador`, `ListaJogadores`, `Simulador` e `main`, que estão localizados no diretório `src`.
+Com o compilador da sua preferência, será necessário compilar os seguintes arquivos `.cpp`: `Carta`, `ACE`, `Jogador`, `No`, `ListaJogadores`, `Simulador` e `main`, que estão localizados no diretório `src`.
 
-Usando o g++, por exemplo, você pode executar o seguinte comando para compilar esses arquivos:
+Usando o `g++`, por exemplo, você pode executar o seguinte comando para compilar esses arquivos:
 
-> g++ src\ACE.cpp src\Carta.cpp src\No.cpp src\Jogador.cpp src\ListaJogadores.cpp src\Simulador.cpp main.cpp -I 
+> g++ src\Carta.cpp src\ACE.cpp src\Jogador.cpp src\No.cpp src\ListaJogadores.cpp src\Simulador.cpp main.cpp -I 
 include -o build\\*main*.exe
 
 Você pode nomear o executável do programa de outra forma, se preferir. Neste caso, basta substituir o *main.exe* para *NomeDoExecutavel*.exe onde *NomeDoExecutavel* representará o nome do programa quando executado através do comando que será mostrado a seguir. Porém, **é importante que o executável seja compilado com a extensão `.exe`.**
@@ -146,11 +177,15 @@ Onde `N`, neste caso, representa o número de jogadores. Para que o jogo seja jo
 
 Caso você não passe nenhum argumento, o jogo será iniciado com o número mínimo de jogadores, neste caso, 2.
 
+```
 Obs.: Pode haver diferenças dos comandos executados a depender do compilador e sistema operacional utilizados. Nesta documentação foram listados os comandos executados usando o Visual Studio Code no Windows 10.
+```
 
 -----
 ## **Materiais consultados para desenvolver a solução:**
 
+- Estruturas de dados [recurso eletrônico] / Nina Edelweiss,
+Renata Galante. – Dados eletrônicos. – Porto Alegre: Bookman, 2009.
 - [Jogos de Cartas: Mico](http://jogosdecartas.hut.com.br/mico/)
 - [stack-data-structure](https://www.geeksforgeeks.org/stack-data-structure-introduction-program/)
 - [How to cast int to enum in C++?](https://stackoverflow.com/questions/11452920/how-to-cast-int-to-enum-in-c)
