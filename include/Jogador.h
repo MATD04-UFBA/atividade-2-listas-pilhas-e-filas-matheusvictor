@@ -19,10 +19,12 @@ public:
   ~Jogador();
 
   void separarPares();
-  void pegarCartaOponente(int posicaoCarta);
+  void pegarCartaOponente(Jogador* j, int posicaoCarta);
   void addCartaMao(Carta* c);
 
   string obterNome();
+  vector<Carta*> obterMao();
+
   void imprimirDetalhes();
   void exibirNumeroCartasMao();
   void exibirTopoMonte();

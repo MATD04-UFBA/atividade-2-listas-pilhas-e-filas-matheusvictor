@@ -53,17 +53,32 @@ void Simulador::iniciarJogo() {
     this->iniciarSeparacaoParesCartas();
     
     this->jogadores->sortearInicioLista();
-    cout << "O jogador " << this->jogadores->obterInicioLista()->obterDado()->obterNome() << " foi sorteado para comecar o jogo!" << endl;
+    cout << this->jogadores->obterInicioLista()->obterDado()->obterNome() << " foi sorteado para comecar o jogo!" << endl;
     cout << "-------------------------------------------------------" << endl;
 
     system("pause");
 
     No* no = this->jogadores->obterInicioLista();
+    int posicaoCartaARemoverDoOponente;
+    
     do {
-        this->contadorRodadas++;
-        cout << "NUMERO RODADA: " << this->contadorRodadas << endl;
+        
+        if (no == this->jogadores->obterInicioLista()) {
+            this->contadorRodadas++;
+            cout << "================ NUMERO DA RODADA: " << this->contadorRodadas << " ================" << endl;
+        }
+
         // codigo rodada
         no->obterDado()->imprimirDetalhes();
+        
+        cout << "Digite a posicao da carta que deseja remover da mao de " << no->obterProximo()->obterDado()->obterNome() << " = ";
+        cin >> posicaoCartaARemoverDoOponente;
+        no->obterDado()->pegarCartaOponente(no->obterProximo()->obterDado(), posicaoCartaARemoverDoOponente);
+
+        no->obterDado()->imprimirDetalhes();
+
+        system("pause");
+
         no = no->obterProximo();
     } while (no->obterProximo() != this->jogadores->obterInicioLista()->obterProximo());
 

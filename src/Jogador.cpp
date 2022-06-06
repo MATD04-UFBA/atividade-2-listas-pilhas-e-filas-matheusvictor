@@ -44,12 +44,31 @@ void Jogador::separarPares() {
 	}
 }
 
+void Jogador::pegarCartaOponente(Jogador* j, int posicaoCarta) {
+	
+	while (posicaoCarta > j->mao.size()) {
+		cout << "Posicao invalida! Tente novamente = ";
+		cin >> posicaoCarta;
+	}
+
+	if (j->mao.size() > 0) {
+		Carta* c = j->mao[posicaoCarta];
+		this->addCartaMao(c);
+		auto cartaARemover = j->mao.begin() + posicaoCarta;
+		j->mao.erase(cartaARemover);	
+	}
+}
+
 void Jogador::addCartaMao(Carta* c) {
 	this->mao.push_back(c);
 }
 
 string Jogador::obterNome() {
 	return this->nome;
+}
+
+vector<Carta*> Jogador::obterMao() {
+	return this->mao;
 }
 
 void Jogador::imprimirDetalhes() {
