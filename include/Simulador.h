@@ -1,3 +1,5 @@
+#include <cctype>
+
 #include "ListaJogadores.h"
 #include "Carta.h"
 #include "ACE.h"
@@ -25,6 +27,8 @@ private:
     void iniciarJogadores();
     
     void distribuirCartas();
+
+    void ordernarMaoJogadores();
     
     void exibirMaoJogador(Jogador* j);
 
