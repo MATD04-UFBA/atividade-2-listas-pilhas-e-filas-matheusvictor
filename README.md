@@ -83,7 +83,7 @@ Qualquer dúvida adicional, evite problemas: não presuma nada, procure o profes
 
 # Sobre a resolução do problema
 
-## **Cartas de um baralho**:
+## **Cartas de um baralho:**
 
 Um baralho de cartas tem um total de 52 cartas (desconsiderando as cartas Coringa); sendo que são classificadas de acordo com seus Naipes e Valores.
 
@@ -136,7 +136,7 @@ Assim, "as listas que respeitam a restrição LIFO são denominadas Pilhas" (Ede
 ![Pilha](https://thumbs.gfycat.com/LikelyAbandonedAracari-size_restricted.gif)
 ###### Figura 4. Representação do comportamento de empilhar.
 
-Neste caso, como a distribuição das cartas entre os jogadores é feita retirando o topo e a transferindo para um jogador, nota-se um comportamente semelhante ao de uma Pilha. 
+Neste caso, como a distribuição das cartas entre os jogadores é feita retirando o topo e a transferindo para um jogador, nota-se um comportamente semelhante ao de uma Pilha. Assim, a estrutura de Pilha pode ser vista na classe `ACE`, por exemplo.
 
 No caso da LSEC, temos que "quando uma lista linear encadeada apresenta um elo ligando o último nodo ao primeiro, ela se torna uma lista circular" (Idem). E, "neste caso, qualquer nodo pode ser utilizado para fazer acesso à lista, pois toda ela pode ser per corrida a partir de qualquer nodo". Assim, dado que o jogador que irá iniciar o jogo será definido através de sorteio, temos que este pode ser a vir qualquer um dos nós da lista; e devido a este comportamento, foi implementada uma LSEC para que seja obedecida a rotatividade entre os jogadores a partir daquele que foi sorteado para começar. 
 
@@ -152,7 +152,7 @@ Com o compilador da sua preferência, será necessário compilar os seguintes ar
 
 Usando o `g++`, por exemplo, você pode executar o seguinte comando para compilar esses arquivos:
 
-> g++ src\Carta.cpp src\ACE.cpp src\Jogador.cpp src\No.cpp src\ListaJogadores.cpp src\Simulador.cpp main.cpp -I 
+> `g++` src\Carta.cpp src\ACE.cpp src\Jogador.cpp src\No.cpp src\ListaJogadores.cpp src\Simulador.cpp main.cpp -I 
 include -o build\\*main*.exe
 
 Você pode nomear o executável do programa de outra forma, se preferir. Neste caso, basta substituir o *main.exe* para *NomeDoExecutavel*.exe onde *NomeDoExecutavel* representará o nome do programa quando executado através do comando que será mostrado a seguir. Porém, **é importante que o executável seja compilado com a extensão `.exe`.**
@@ -205,5 +205,11 @@ Obs.: Pode haver diferenças dos comandos executados a depender do compilador e 
 - [Como usar o vector para armazenar uma classe?](https://pt.stackoverflow.com/questions/120231/como-usar-o-vector-para-armazenar-uma-classe)
 
 - [How do I print out the contents of a vector?](https://stackoverflow.com/questions/10750057/how-do-i-print-out-the-contents-of-a-vector)
+
+- [Remover Elemento de Vector em C++](https://www.delftstack.com/pt/howto/cpp/remove-element-from-vector-cpp/#:~:text=em%20C%2B%2B.-,Utilizar%20o%20erase()%20M%C3%A9todo%20para%20remover%20um%20elemento%20de,ap%C3%B3s%20o%20%C3%BAltimo%20elemento%20removido.)
+
+- [How do I get a specific range of numbers from rand()?](https://stackoverflow.com/questions/1202687/how-do-i-get-a-specific-range-of-numbers-from-rand)
+
+- [Entrada/Saída com Streams: objeto "cin"](https://www.inf.pucrs.br/~pinho/PRGSWB/Streams/streams.html)
 
 - [C++ toupper()](https://www.programiz.com/cpp-programming/library-function/cctype/toupper)
