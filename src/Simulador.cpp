@@ -1,6 +1,8 @@
 #include "Simulador.h"
 #include "Carta.h"
 
+char opcao;
+
 Simulador::Simulador(int quantidadeJogadores) { 
     this->baralho = new ACE;
     this->mico = new Carta;
@@ -16,8 +18,7 @@ void Simulador::iniciarJogo() {
     
     cout << "===========================================================================================" << endl;
     cout << "Baralho inicializado! Deseja Deseja imprimi-lo antes de embaralha-lo? ";
-    
-    char opcao;
+        
     do {
         cout << "[S/N] = ";
         cin >> opcao;   
@@ -40,8 +41,10 @@ void Simulador::iniciarJogo() {
     } while ((char) toupper(opcao) != 'S' && (char) toupper(opcao) != 'N');
 
      if ((char) toupper(opcao) == 'S') {
-        cout << "Mico: ";
+        cout << "===========================================================================================" << endl;
+        cout << "MICO: ";
         mico->obterDetalhesCarta();
+        cout << "===========================================================================================" << endl;
     }
     
     system("pause");
@@ -54,14 +57,13 @@ void Simulador::iniciarJogo() {
 
     this->ordernarMaoJogadores();
     this->iniciarSeparacaoParesCartas();
-    cout << "Todos os jogadores separaram seus pares de cartas (caso possuam) antes das rodadas comecarem." << endl;
+    cout << "Todos os jogadores tiveram suas cartas ordenadas e pares separados (caso possuam) antes das rodadas comecarem." << endl;
     
     system("pause");
     system("cls");
 
     this->jogadores->sortearInicioLista();
     cout << this->jogadores->obterInicioLista()->obterDado()->obterNome() << " foi sorteado para comecar o jogo!" << endl;
-    cout << "===========================================================================================" << endl;
 
     system("pause");
     system("cls");
@@ -82,8 +84,7 @@ void Simulador::iniciarJogo() {
             system("pause");
         
             no->obterDado()->imprimirDetalhes();
-            system("cls");
-                    
+                                
             int tamanhoMaoOponente = no->obterProximo()->obterDado()->obterMao().size();        
             do {
                 cout << "Digite a posicao da carta que deseja remover da mao de " << no->obterProximo()->obterDado()->obterNome() << " = ";
@@ -98,17 +99,19 @@ void Simulador::iniciarJogo() {
 
             do {
                 cout << "[S/N] = ";
-                cin >> opcao;   
+                cin >> opcao;
             } while ((char) toupper(opcao) != 'S' && (char) toupper(opcao) != 'N');
 
             if ((char) toupper(opcao) == 'S') {
                 no->obterDado()->imprimirDetalhes();
+                system("pause");
             }
             
             if (no->obterDado()->temMaoVazia()){
                 //remover jogador
             }
-
+            
+            system("cls");
             no = no->obterProximo();
 
         } while (no->obterProximo() != this->jogadores->obterInicioLista()->obterProximo());

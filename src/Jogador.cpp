@@ -78,7 +78,8 @@ vector<Carta*> Jogador::obterMao() {
 void Jogador::imprimirDetalhes() {
 	cout << "====================================== [" << this->obterNome() << "] =========================================" << endl; 
 	this->exibirMao();
-	this->exibirTopoMonte();
+	this->exibirMonte();
+	this->exibirTopoMonte();	
 }
 
 void Jogador::exibirNumeroCartasMao() {
@@ -88,10 +89,11 @@ void Jogador::exibirNumeroCartasMao() {
 void Jogador::exibirTopoMonte() {
 	Carta* cartaUltima = this->monte->pegarCarta();
 	Carta* cartaPenultima = this->monte->pegarCarta();
-
+	
 	cout << "As duas cartas do topo do monte sao: " << endl;
 	cartaUltima->obterDetalhesCarta();
 	cartaPenultima->obterDetalhesCarta();
+	cout << "===========================================================================================" << endl;
 
 	this->monte->addCarta(
 		Carta(cartaPenultima->obterNaipe(), cartaPenultima->obterValor())
@@ -105,11 +107,22 @@ void Jogador::exibirTopoMonte() {
 
 void Jogador::exibirMao() {
 	int i = 0;
+	cout << endl;
 	for (Carta* carta: this->mao) { 
 		cout << i << " | ";
 		carta->obterDetalhesCarta();
 		i++;
 	}
+}
+
+void Jogador::exibirMonte() {
+ 	
+	cout << endl << "Qtd. cartas no monte: " << this->monte->tamanho() << ". ";	
+	/*
+	for (int i = 0 ; i < this->monte->tamanho() ; i++) {
+		std::cout << "Topo: " << i << " | " << endl;
+	}
+	*/	
 }
 
 void Jogador::ordenarMao() {

@@ -82,14 +82,14 @@ void ACE::embaralhar() {
 }
 
 void ACE::imprimir() {
-	std::cout << "----------------------------------" << std::endl;
+    cout << "===========================================================================================" << endl;
 	for (int i = 0 ; i < TOTAL_CARTAS ; i++) {
 		std::cout << "Topo: " << i << " | ";
-		std::cout << "Naipe: " << this->ace[i].obterNaipe() << " | ";
-		std::cout << "Valor: " << this->ace[i].obterValor() << std::endl;
+		this->ace[i].obterDetalhesCarta();
 	}
-	std::cout << "Total de cartas: " << this->topo << std::endl;
-	std::cout << "----------------------------------" << std::endl;
+	
+	std::cout << std::endl << "TOTAL DE CARTAS NO BARALHO: " << this->topo << std::endl;
+	cout << "===========================================================================================" << endl;
 }
 
 int ACE::tamanho() {

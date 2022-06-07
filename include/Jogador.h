@@ -30,6 +30,7 @@ public:
   void exibirNumeroCartasMao();
   void exibirTopoMonte();
   void exibirMao();
+  void exibirMonte();
 
   void ordenarMao();
 
