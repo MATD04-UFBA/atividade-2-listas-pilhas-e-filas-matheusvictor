@@ -63,6 +63,10 @@ void Jogador::addCartaMao(Carta* c) {
 	this->mao.push_back(c);
 }
 
+bool Jogador::temMaoVazia() {
+	return this->mao.size() == 0;
+}
+
 string Jogador::obterNome() {
 	return this->nome;
 }
@@ -72,12 +76,9 @@ vector<Carta*> Jogador::obterMao() {
 }
 
 void Jogador::imprimirDetalhes() {
-	// Deve ser possível ver as cartas de cada jogador, e a carta de cima do monte de cada jogador.  
-	cout << "[ " << this->obterNome() << " ]" << endl;
-	cout << "Numero de cartas na mao: " << this->mao.size() << endl;
+	cout << "====================================== [" << this->obterNome() << "] =========================================" << endl; 
 	this->exibirMao();
 	this->exibirTopoMonte();
-	cout << "-------------------------------------------------------" << endl;
 }
 
 void Jogador::exibirNumeroCartasMao() {
@@ -105,7 +106,7 @@ void Jogador::exibirTopoMonte() {
 void Jogador::exibirMao() {
 	int i = 0;
 	for (Carta* carta: this->mao) { 
-		cout << i << " ";
+		cout << i << " | ";
 		carta->obterDetalhesCarta();
 		i++;
 	}

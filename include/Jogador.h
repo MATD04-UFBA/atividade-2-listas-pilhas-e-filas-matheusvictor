@@ -21,6 +21,7 @@ public:
   void separarPares();
   void pegarCartaOponente(Jogador* j, int posicaoCarta);
   void addCartaMao(Carta* c);
+  bool temMaoVazia();
 
   string obterNome();
   vector<Carta*> obterMao();
