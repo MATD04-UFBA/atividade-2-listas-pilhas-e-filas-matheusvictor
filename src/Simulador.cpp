@@ -18,13 +18,10 @@ void Simulador::iniciarJogo() {
     
     cout << "===========================================================================================" << endl;
     cout << "Baralho inicializado! Deseja Deseja imprimi-lo antes de embaralha-lo? ";
-        
-    do {
-        cout << "[S/N] = ";
-        cin >> opcao;   
-    } while ((char) toupper(opcao) != 'S' && (char) toupper(opcao) != 'N');
+    
+    this->exibirOpcoesEscolha();
 
-    if ((char) toupper(opcao) == 'S') {
+    if (this->verificarOpcaoDeEscolha(opcao)) {
         this->baralho->imprimir();
     }
 
@@ -33,7 +30,7 @@ void Simulador::iniciarJogo() {
 
     this->baralho->embaralhar(); 
     cout << "Baralho foi embaralhado e o Mico foi retirado! Deseja Deseja imprimir o Mico? ";
-    Carta* mico = this->baralho->pegarCarta();
+    this->mico = this->baralho->pegarCarta();
 
     do {
         cout << "[S/N] = ";
@@ -43,7 +40,7 @@ void Simulador::iniciarJogo() {
      if ((char) toupper(opcao) == 'S') {
         cout << "===========================================================================================" << endl;
         cout << "MICO: ";
-        mico->obterDetalhesCarta();
+        this->mico->obterDetalhesCarta();
         cout << "===========================================================================================" << endl;
     }
     
@@ -70,10 +67,14 @@ void Simulador::iniciarJogo() {
 
     No* no = this->jogadores->obterInicioLista();
     int posicaoCartaARemoverDoOponente;
+    // laço responsável por manter o jogo em continuação até que haja apenas 1 jogador
     do {
+        // inicio laço superior
 
+        // laço responsável por executar uma rodada (cada jogador joga)
         do {
             
+            // talvez nao precise disso, apenas mover o conteudo para o laço superior 
             if (no == this->jogadores->obterInicioLista()) {
                 this->contadorRodadas++;
                 cout << "===========================================================================================" << endl;
@@ -87,9 +88,9 @@ void Simulador::iniciarJogo() {
                                 
             int tamanhoMaoOponente = no->obterProximo()->obterDado()->obterMao().size();        
             do {
-                cout << "Digite a posicao da carta que deseja remover da mao de " << no->obterProximo()->obterDado()->obterNome() << " = ";
+                cout << "Digite a posicao entre 0 e " << tamanhoMaoOponente - 1 << " da carta que deseja remover da mao de " << no->obterProximo()->obterDado()->obterNome() << " = ";
                 cin >> posicaoCartaARemoverDoOponente;
-            } while (posicaoCartaARemoverDoOponente > tamanhoMaoOponente || posicaoCartaARemoverDoOponente < 0);
+            } while (posicaoCartaARemoverDoOponente >= tamanhoMaoOponente || posicaoCartaARemoverDoOponente < 0);
 
             no->obterDado()->pegarCartaOponente(no->obterProximo()->obterDado(), posicaoCartaARemoverDoOponente);
             no->obterDado()->ordenarMao();
@@ -107,8 +108,16 @@ void Simulador::iniciarJogo() {
                 system("pause");
             }
             
-            if (no->obterDado()->temMaoVazia()){
-                //remover jogador
+            if (no->obterDado()->temMaoVazia()) {
+                cout << "Removendo jogador " << no->obterDado()->obterNome();
+                this->jogadores->removerJogador(no);
+                break;
+            }
+            
+            if(no->obterProximo()->obterDado()->temMaoVazia()) {
+                cout << "Removendo jogador " << no->obterProximo()->obterDado()->obterNome() << endl;
+                this->jogadores->removerJogador(no->obterProximo());
+                break;
             }
             
             system("cls");
@@ -116,10 +125,12 @@ void Simulador::iniciarJogo() {
 
         } while (no->obterProximo() != this->jogadores->obterInicioLista()->obterProximo());
 
-    } while(this->jogadores->tamanho() == 1);
+    } while(this->jogadores->tamanho() > 1);
 
-    cout << this->jogadores->obterInicioLista()->obterDado()->obterNome() << "perdeu!" << endl;
-
+    cout << this->jogadores->obterInicioLista()->obterDado()->obterNome() << " perdeu!" << endl;
+    cout << "O mico eh: "; this->mico->obterDetalhesCarta();
+    cout << " Mao do perdedor: ";
+    this->jogadores->obterInicioLista()->obterDado()->exibirMao();
 }
 
 void Simulador::iniciarJogadores() {
@@ -174,4 +185,15 @@ void Simulador::iniciarSeparacaoParesCartas() {
         no->obterDado()->separarPares();
         no = no->obterProximo();
     } while (no->obterProximo() != this->jogadores->obterInicioLista()->obterProximo());
+}
+
+void Simulador::exibirOpcoesEscolha() {
+    do {
+        cout << "[S/N] = ";
+        cin >> opcao;
+    } while ((char) toupper(opcao) != 'S' && (char) toupper(opcao) != 'N');
+}
+
+bool Simulador::verificarOpcaoDeEscolha(char opc) {
+    return (char) toupper(opcao) == 'S';
 }

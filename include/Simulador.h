@@ -38,5 +38,9 @@ private:
     void iniciarSeparacaoParesCartas();
 
     void iniciarRodada(Jogador* j);
+
+    void exibirOpcoesEscolha();
+
+    bool verificarOpcaoDeEscolha(char opc);
    
 };
