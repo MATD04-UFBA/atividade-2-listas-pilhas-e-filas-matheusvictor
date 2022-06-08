@@ -17,8 +17,7 @@ public:
     bool isListaCheia();
 
     bool inserirJogador(Jogador* j);
-    bool removerJogador(Jogador j);
-    bool buscarJogador(Jogador* j, No* &noAtual);
+    bool removerJogador(No* no);
 
     void sortearInicioLista();
     No* obterInicioLista();

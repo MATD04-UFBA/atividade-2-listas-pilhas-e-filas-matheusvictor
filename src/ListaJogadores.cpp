@@ -49,27 +49,34 @@ bool ListaJogadores::inserirJogador(Jogador* j) {
 	return true;
 }
 
-bool ListaJogadores::removerJogador(Jogador j) {
-	return true;
-}
+bool ListaJogadores::removerJogador(No* no) {
+	No* noAtual = this->inicioLista;
+	No* noAnterior = this->inicioLista;
 
-bool ListaJogadores::buscarJogador(Jogador* j, No* &noAtual) {
-	
-	noAtual = nullptr;
-
-	if (this->numeroJogadores == 0) {
-		return false;
+	// descobre quem é o ultimo da lista
+	while (noAnterior->obterProximo() != this->inicioLista) {
+		noAnterior = noAnterior->obterProximo();
 	}
 
-	noAtual = this->inicioLista;
+	// pecorrer a fila para encontrar o no a ser deletado
+	while (noAtual->obterProximo() != this->inicioLista) {
+		if (noAtual == no) {
+			break;
+		}
 
-	while ((noAtual != nullptr) &&	(noAtual->obterDado() != j)) {
+		noAnterior = noAtual;
 		noAtual = noAtual->obterProximo();
 	}
 
-	if(noAtual == nullptr) return false;
+	if (noAtual == no) {
+		noAnterior->setarProximo(noAtual->obterProximo());
+		delete noAtual->obterDado();
+		delete noAtual;
+		this->numeroJogadores--;
+		return true;
+	}
 
-	return true;		
+	return false;
 }
 
 void ListaJogadores::sortearInicioLista() {
@@ -82,8 +89,6 @@ void ListaJogadores::sortearInicioLista() {
 	}
 
 	this->inicioLista = no;
-	
-	cout << posicaoSorteada << endl;
 }
 
 No* ListaJogadores::obterInicioLista() { 
